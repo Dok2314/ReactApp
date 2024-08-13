@@ -1,8 +1,8 @@
 .order-management {
     padding: 20px;
     box-sizing: border-box;
-    margin-left: 250px; /* Отступ для учета ширины сайдбара */
-    width: calc(100% - 250px); /* Уменьшаем ширину контейнера на ширину сайдбара */
+    margin-left: 250px;
+    width: calc(100% - 250px);
 }
 
 .order-form {
@@ -13,17 +13,17 @@
     margin-right: 10px;
     padding: 8px;
     font-size: 14px;
-    width: calc(33% - 20px); /* Уменьшаем ширину для лучшего отображения */
+    width: calc(33% - 20px);
     box-sizing: border-box;
-    border: 1px solid #ccc; /* Граница для селекта */
-    border-radius: 4px; /* Скругление углов для селекта */
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 .order-form input {
     margin-right: 10px;
     padding: 8px;
     font-size: 14px;
-    width: calc(33% - 20px); /* Уменьшаем ширину для лучшего отображения */
+    width: calc(33% - 20px);
     box-sizing: border-box;
 }
 
@@ -40,8 +40,8 @@
 
 .order-table {
     margin-top: 20px;
-    overflow-x: auto; /* Добавляем горизонтальную прокрутку */
-    width: 100%; /* Таблица должна занимать 100% ширины контейнера */
+    overflow-x: auto;
+    width: 100%;
     box-sizing: border-box;
 }
 
@@ -54,17 +54,17 @@
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
-    font-size: 14px; /* Уменьшаем размер шрифта */
+    font-size: 14px;
 }
 
 .order-table th {
     background-color: #f4f4f4;
-    font-size: 16px; /* Размер шрифта для заголовков таблицы */
+    font-size: 16px;
 }
 
 .edit-button, .delete-button {
     padding: 5px 10px;
-    font-size: 12px; /* Уменьшаем размер шрифта */
+    font-size: 12px;
     cursor: pointer;
     border: none;
     border-radius: 4px;
