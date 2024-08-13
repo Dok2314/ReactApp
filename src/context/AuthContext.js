@@ -1,10 +1,11 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import api from '../services/api'; // Импортируйте ваш экземпляр axios
+import api from '../services/api';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const token = localStorage.getItem('jwtToken');
@@ -12,10 +13,14 @@ export const AuthProvider = ({ children }) => {
             api.get('/user', { headers: { Authorization: `Bearer ${token}` } })
                 .then(response => {
                     setUser(response.data.user);
+                    setLoading(false);
                 })
                 .catch(() => {
                     localStorage.removeItem('jwtToken');
+                    setLoading(false);
                 });
+        } else {
+            setLoading(false);
         }
     }, []);
 
@@ -30,7 +35,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ user, login, logout }}>
+        <AuthContext.Provider value={{ user, login, logout, loading }}>
             {children}
         </AuthContext.Provider>
     );
