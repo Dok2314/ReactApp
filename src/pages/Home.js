@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext';
 
 const Home = () => {
     const navigate = useNavigate();
-    const { isAuthenticated, logout } = useAuth();
+    const { user, logout } = useAuth();
 
     const handleLogout = () => {
         logout();
@@ -14,8 +14,14 @@ const Home = () => {
     return (
         <div>
             <h1>Home</h1>
-            {!isAuthenticated && <button onClick={() => navigate('/login')}>Login</button>}
-            {isAuthenticated && <button onClick={handleLogout}>Logout</button>}
+            {user ? (
+                <>
+                    <p>Welcome, {user.name}</p>
+                    <button onClick={handleLogout}>Logout</button>
+                </>
+            ) : (
+                <button onClick={() => navigate('/login')}>Login</button>
+            )}
         </div>
     );
 };

@@ -1,27 +1,36 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import api from '../services/api'; // Импортируйте ваш экземпляр axios
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [user, setUser] = useState(null);
 
     useEffect(() => {
         const token = localStorage.getItem('jwtToken');
-        setIsAuthenticated(!!token);
+        if (token) {
+            api.get('/user', { headers: { Authorization: `Bearer ${token}` } })
+                .then(response => {
+                    setUser(response.data.user);
+                })
+                .catch(() => {
+                    localStorage.removeItem('jwtToken');
+                });
+        }
     }, []);
 
-    const login = (token) => {
-        localStorage.setItem('jwtToken', token);
-        setIsAuthenticated(true);
+    const login = (data) => {
+        setUser(data.user);
+        localStorage.setItem('jwtToken', data.token);
     };
 
     const logout = () => {
+        setUser(null);
         localStorage.removeItem('jwtToken');
-        setIsAuthenticated(false);
     };
 
     return (
-        <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+        <AuthContext.Provider value={{ user, login, logout }}>
             {children}
         </AuthContext.Provider>
     );

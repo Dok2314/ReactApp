@@ -1,25 +1,35 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import './App.css';
 import Login from './pages/Login';
-import UserManagement from './pages/UserManagement';
 import Home from './pages/Home';
+import AdminDashboard from './pages/AdminDashboard';
+import ProductManagement from './pages/ProductManagement';
+import OrderManagement from './pages/OrderManagement';
+import UserManagement from './pages/UserManagement';
+import Sidebar from './components/sidebar/Sidebar';
 import { AuthProvider } from './context/AuthContext';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import PrivateRoute from './components/privateroutes/PrivateRoute';
 
 const App = () => {
     return (
         <AuthProvider>
             <div className="App">
-                <header className="App-header">
+                <Sidebar />
+                <div className="content">
                     <Routes>
-                        <Route path="/" element={<Home />} />
                         <Route path="/login" element={<Login />} />
-                        <Route path="/admin/users" element={<UserManagement />} />
+                        <Route element={<PrivateRoute />}>
+                            <Route path="/" element={<Home />} />
+                            <Route path="/admin/dashboard" element={<AdminDashboard />} />
+                            <Route path="/admin/users" element={<UserManagement />} />
+                            <Route path="/admin/products" element={<ProductManagement />} />
+                            <Route path="/admin/orders" element={<OrderManagement />} />
+                        </Route>
                     </Routes>
                     <ToastContainer />
-                </header>
+                </div>
             </div>
         </AuthProvider>
     );

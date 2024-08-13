@@ -1,35 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import api from '../services/api';
+import React from 'react';
+import { useAuth } from '../context/AuthContext';
 
 const UserManagement = () => {
-    const [users, setUsers] = useState([]);
-
-    useEffect(() => {
-        const fetchUsers = async () => {
-            try {
-                const response = await api.get('/admin/users');
-                const usersData = response.data.data || [];
-                setUsers(usersData);
-            } catch (error) {
-                console.error('Error fetching users:', error);
-            }
-        };
-
-        fetchUsers();
-    }, []);
+    const { user } = useAuth();
 
     return (
         <div>
             <h1>User Management</h1>
-            <ul>
-                {Array.isArray(users) && users.length > 0 ? (
-                    users.map(user => (
-                        <li key={user.id}>{user.name}</li>
-                    ))
-                ) : (
-                    <p>No users found.</p>
-                )}
-            </ul>
+            {user ? <p>Logged in as {user.name}</p> : <p>You are not logged in</p>}
         </div>
     );
 };

@@ -1,0 +1,9 @@
+{
+  "welcome": "Welcome",
+  "admin": {
+    "dashboard": "Admin Dashboard",
+    "products": "Products",
+    "users": "Users",
+    "orders": "Orders"
+  }
+}
