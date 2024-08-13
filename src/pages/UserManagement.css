@@ -1,15 +1,15 @@
-.product-management {
+.user-management {
     padding: 20px;
     box-sizing: border-box;
     margin-left: 250px; /* Отступ для учета ширины сайдбара */
     width: calc(100% - 250px); /* Уменьшаем ширину контейнера на ширину сайдбара */
 }
 
-.product-form {
+.user-form {
     margin-bottom: 20px;
 }
 
-.product-form input {
+.user-form input {
     margin-right: 10px;
     padding: 8px;
     font-size: 14px;
@@ -28,26 +28,26 @@
     border-radius: 4px;
 }
 
-.product-table {
+.user-table {
     margin-top: 20px;
     overflow-x: auto; /* Добавляем горизонтальную прокрутку */
     width: 100%; /* Таблица должна занимать 100% ширины контейнера */
     box-sizing: border-box;
 }
 
-.product-table table {
+.user-table table {
     width: 100%;
     border-collapse: collapse;
 }
 
-.product-table th, .product-table td {
+.user-table th, .user-table td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
     font-size: 14px; /* Уменьшаем размер шрифта */
 }
 
-.product-table th {
+.user-table th {
     background-color: #f4f4f4;
     font-size: 16px; /* Размер шрифта для заголовков таблицы */
 }

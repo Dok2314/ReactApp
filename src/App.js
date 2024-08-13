@@ -10,7 +10,6 @@ import Sidebar from './components/sidebar/Sidebar';
 import { AuthProvider } from './context/AuthContext';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import PrivateRoute from './components/privateroutes/PrivateRoute';
 
 const App = () => {
     return (
@@ -20,13 +19,11 @@ const App = () => {
                 <div className="content">
                     <Routes>
                         <Route path="/login" element={<Login />} />
-                        <Route element={<PrivateRoute />}>
-                            <Route path="/" element={<Home />} />
-                            <Route path="/admin/dashboard" element={<AdminDashboard />} />
-                            <Route path="/admin/users" element={<UserManagement />} />
-                            <Route path="/admin/products" element={<ProductManagement />} />
-                            <Route path="/admin/orders" element={<OrderManagement />} />
-                        </Route>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+                        <Route path="/admin/users" element={<UserManagement />} />
+                        <Route path="/admin/products" element={<ProductManagement />} />
+                        <Route path="/admin/orders" element={<OrderManagement />} />
                     </Routes>
                     <ToastContainer />
                 </div>
